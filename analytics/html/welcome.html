@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .welcome-container {
+            margin: 100px auto;
+            padding: 20px;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-container h2 {
+            margin-bottom: 20px;
+        }
+
+        #current-time {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h2>Welcome</h2>
+        <p id="current-time"></p>
+    </div>
+
+    <script>
+        // JavaScript to display the current date and time
+        var currentTimeParam = decodeURIComponent(new URLSearchParams(window.location.search).get('time'));
+        var currentTimeElement = document.getElementById('current-time');
+        if (currentTimeParam) {
+            currentTimeElement.innerText = 'Current Date and Time: ' + currentTimeParam;
+        } else {
+            currentTimeElement.innerText = 'No date and time information available.';
+        }
+    </script>
+</body>
+</html>

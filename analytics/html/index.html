@@ -73,7 +73,10 @@
             var expectedPassword = 'welcome';
 
             if (username === expectedUsername && password === expectedPassword) {
-                return true; // Allow form submission
+                var currentTime = new Date();
+                var formattedTime = currentTime.toLocaleString();
+                window.location.href = 'welcome.html?time=' + encodeURIComponent(formattedTime);
+                return false; // Prevent form submission
             } else {
                 document.getElementById('error-message').innerText = 'Invalid username or password';
                 return false; // Prevent form submission
