@@ -46,16 +46,39 @@
         .login-form input[type="submit"]:hover {
             background-color: #0056b3;
         }
+
+        #error-message {
+            color: red;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form class="login-form" action="your_login_processing_script.php" method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
+        <form class="login-form" onsubmit="return validateForm()" method="POST">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
+        <p id="error-message"></p>
     </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Replace these hardcoded values with your actual username and password
+            var expectedUsername = 'admin';
+            var expectedPassword = 'welcome';
+
+            if (username === expectedUsername && password === expectedPassword) {
+                return true; // Allow form submission
+            } else {
+                document.getElementById('error-message').innerText = 'Invalid username or password';
+                return false; // Prevent form submission
+            }
+        }
+    </script>
 </body>
 </html>
